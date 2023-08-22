@@ -10,12 +10,15 @@ Ref URL: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/
 1. Setup MongoDB repos.
 
 ```
-echo '[mongodb-org-4.2]
+Create a /etc/yum.repos.d/mongodb-org-7.0.repo file so that you can install MongoDB directly using yum
+add the below content to the file created above and save the file.
+[mongodb-org-7.0]
 name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/
+baseurl=https://repo.mongodb.org/yum/amazon/2023/mongodb-org/7.0/x86_64/
 gpgcheck=1
 enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc' >/etc/yum.repos.d/mongodb.repo
+gpgkey=https://www.mongodb.org/static/pgp/server-7.0.asc
+
 ```
 
 2. Install Mongo & Start Service.
