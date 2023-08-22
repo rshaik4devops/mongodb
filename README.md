@@ -5,7 +5,7 @@ Choose `mongodb` from the list.
 
 ## Install MongoDB Manual Steps.
 
-Ref URL: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/
+Ref URL: https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-amazon/
 
 1. Setup MongoDB repos.
 
@@ -49,8 +49,8 @@ Download the schema and load it.
 # cd /tmp
 # unzip mongodb.zip
 # cd mongodb-main
-# mongo < catalogue.js
-# mongo < users.js 
+# mongosh < catalogue.js
+# mongosh < users.js 
 
 ```
 
