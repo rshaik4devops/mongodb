@@ -1,0 +1,52 @@
+---
+  - name : Install and configure mongodb
+    hosts: mongodb
+    become: yes
+    tasks:
+      - name : set up mongodb repos
+        yum_repository:
+          name: MongoDB Repository
+          baseurl: https://repo.mongodb.org/yum/amazon/2023/mongodb-org/7.0/x86_64/
+          gpgcheck: true
+          gpgkey: https://www.mongodb.org/static/pgp/server-7.0.asc
+          enabled: true
+     - name: install the mongodb
+       yum: 
+         name: mongodb-org
+         state: installed
+     - name: enable mongodb service
+       systemd: 
+         name: mongod
+         enabled: true
+
+     - name: start mongodb
+       systemd:
+         name: mongod
+         state: started
+     - name: updtae the ip address in mongo conf
+       lineinfile:
+         path: /etc/mongod.conf
+         regexp: '^127\.0\.0\.1'
+         line: '0.0.0.0'
+      - name: restart mongodb
+        systemd:
+          name: mongod
+          state: restarted
+      - name: download schema from github
+        get_url:
+          url: https://github.com/rshaik4devops/mongodb/archive/main.zip
+          path: /tmp/mongodb.zip
+      - name: unarchive the schema file
+        unarchive:
+          src: /tmp/mongodb.zip
+          dest: /tmp
+      - name:  import schemas
+        command: mongosh < {{ item }}
+        args:
+          chdir: /tmp/mongodb-main
+        loop:
+          - catalogue.js
+          - users.js 
+
+
+         
