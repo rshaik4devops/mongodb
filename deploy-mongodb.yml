@@ -36,7 +36,7 @@
       - name: download schema from github
         get_url:
           url: https://github.com/rshaik4devops/mongodb/archive/main.zip
-          path: /tmp/mongodb.zip
+          dest: /tmp/mongodb.zip
       - name: unarchive the schema file
         unarchive:
           src: /tmp/mongodb.zip
