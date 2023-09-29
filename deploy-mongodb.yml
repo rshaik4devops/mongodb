@@ -41,6 +41,7 @@
         unarchive:
           src: /tmp/mongodb.zip
           dest: /tmp
+          remote_src: true
       - name:  import schemas
         command: mongosh < {{ item }}
         args:
