@@ -27,7 +27,7 @@
       - name: updtae the ip address in mongo conf
         lineinfile:
           path: /etc/mongod.conf
-          regexp: '^bindIp: 127.0.0.1'
+          regexp: '^bindIp: 127.0.0.1\s'
           line: 'bindIp: 0.0.0.0'
       - name: restart mongodb
         systemd:
