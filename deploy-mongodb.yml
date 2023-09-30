@@ -24,7 +24,9 @@
         systemd:
           name: mongod
           state: started
-      
+      - name: updtae the ip address in mongo conf
+        command: sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf
+           
       - name: restart mongodb
         systemd:
           name: mongod
@@ -45,6 +47,7 @@
         loop:
           - catalogue.js
           - users.js 
+         
 
 
          
