@@ -24,6 +24,14 @@
         systemd:
           name: mongod
           state: started
+      - name: remove  mongodb-mongosh
+        yum: 
+          name: mongodb-mongosh
+          state: absent
+      - name: install mongo secure sh
+        yum:
+          name: mongodb-mongosh-shared-openssl3
+          state: installed 
       - name: updtae the ip address in mongo conf
         command: sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf
            
