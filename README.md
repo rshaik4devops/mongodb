@@ -29,9 +29,13 @@ gpgkey=https://www.mongodb.org/static/pgp/server-7.0.asc
 # systemctl start mongod
 ```
 To interact with mongoshell securely run the below two commands to uninstall mongo non secure shell and install mongo secure shell
-
 # rpm -e --nodeps mongodb-mongosh
 # yum install mongodb-mongosh-shared-openssl3.x86_64 -y
+```
+
+
+
+
 3. Update Liste IP address from 127.0.0.1 to 0.0.0.0 in config file 
 
 Config file: `/etc/mongod.conf`
